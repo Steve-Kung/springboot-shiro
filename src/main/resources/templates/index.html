@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+</head>
+<body>
+<div class="ui center aligned equal width container grid">
+    <div class="row">
+        <div class="column">
+            <div style="text-align: center;margin-top: 100px; font-size: 20px;">Home界面</div>
+            <div th:text="${resultMap}"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div shiro:notAuthenticated="">
+                <a th:href="@{/toLogin}" class="ui blue button">
+                    login
+                </a>
+            </div>
+            <div shiro:authenticated="">
+                <a th:href="@{/logout}" class="ui yellow button">
+                    logout
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div shiro:authenticated="">
+                <i class="user icon"></i>
+                username: <span shiro:principal=""></span>
+            </div>
+        </div>
+        <!--<div class="column">-->
+            <!--<div th:if="${session.loginUser!=null}">-->
+                <!--<p th:text="${session.loginUser.name}"></p>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <div class="row">
+        <div class="column">
+            <div shiro:hasPermission="user:create">
+                <a th:href="@{/user/add}" class="ui blue basic button">add</a>
+            </div>
+        </div>
+        <div class="column">
+            <div shiro:hasPermission="user:update">
+                <a th:href="@{/user/update}" class="ui blue basic button">update</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+</head>
+<body>
+<div class="ui container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="text-align: center; margin-top: 100px; font-size: 20px">用户登录界面</div>
+    <form class="ui form" method="post" th:action="@{/home}">
+        <div class="field">
+            <label>用户名</label>
+            <input type="text" name="username" placeholder="请输入用户名">
+        </div>
+        <div class="field">
+            <label>密码</label>
+            <input type="password" name="password" placeholder="请输入密码">
+        </div>
+        <!--<div class="field">-->
+        <!--<div class="ui checkbox">-->
+        <!--<input type="checkbox" tabindex="0" class="hidden">-->
+        <!--<label>记住我</label>-->
+        <!--</div>-->
+        <!--</div>-->
+        <button class="ui blue button" type="submit">提交</button>
+    </form>
+
+    <div th:if="${resultMap}" class="ui red message">
+        <p th:text="${resultMap}"></p>
+    </div>
+</div>
+
+</body>
+</html>
